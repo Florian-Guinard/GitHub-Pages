@@ -1,8 +1,12 @@
 
+
 from bokeh.models import ColumnDataSource
 from bokeh.plotting import figure, show
 from bokeh.models import ColorPicker, Spinner, RangeSlider,CustomJS
 from bokeh.layouts import row, column
+from bokeh.resources import CDN
+from bokeh.embed import file_html
+from bokeh.embed import autoload_static
 
 
 #Données de base
@@ -39,3 +43,16 @@ range_slider.js_link("value",plt.y_range,"end",attr_selector=1)
 
 layout = row(plt, column (picker1, spinner1,picker2,spinner2,range_slider))
 show(layout)
+
+# html = file_html(layout, CDN, "tout")
+
+# newfile = open('C:\\Users\\Florian\\Documents\\Universite\\M1\\S2\\mongodb\\GitHub-Pages\\tout.html', 'w')
+# newfile.write(html)
+# newfile.close()
+
+
+js, tag = autoload_static(layout, CDN, "'C:\\Users\\Florian\\Documents\\Universite\\M1\\S2\\mongodb\\GitHub-Pages\\js3.html'")
+print("le js")
+print(js)
+print("le tag")
+print(tag)
